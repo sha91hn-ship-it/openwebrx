@@ -13,6 +13,99 @@ Install Python dependencies with `python3 -m pip install -r radio-tools/requirem
 
 The Meteor scheduler follows two satellites from CelesTrak TLEs and records only its locked top-five, non-overlapping pass targets. It requires the SDR to be idle; a running web receiver may prevent a capture. Transmission status is reported as UNKNOWN unless verified. The installed SatDump runtime on the source receiver is not included; its current ARM build is incompatible with that host.
 
+## OpenWebRX-profilok frekvencia-lefedettsége
+
+A lista a futó vevő konfigurált profiljait dokumentálja. A „vételi tartomány” az `center_freq ± samp_rate/2` alapján számolt névleges pillanatnyi IQ-sávszélesség, nem jogi frekvenciakiosztás vagy garantáltan használható analóg szűrősáv. A kezdő frekvencia és demodulációs mód a profil megnyitásakor beállított érték.
+
+### Rövidhullámú, amatőr és egyéb profilok
+
+Ezeket a profilokat rövidhullámú műsorszórók és hallgatók, engedéllyel működő rádióamatőrök, légi rádiós szolgálatok, illetve ISM/telemetriai eszközök vételére állították be.
+
+| Profil | Kezdő hangolás | Névleges vételi tartomány | Mód | Mintavétel |
+|---|---:|---:|:---:|---:|
+| 160 m | 1.800 MHz | 0.988–2.012 MHz | LSB | 1.024 Msps |
+| 80 m | 3.700 MHz | 2.988–4.012 MHz | LSB | 1.024 Msps |
+| 40 m | 7.300 MHz | 6.988–8.012 MHz | LSB | 1.024 Msps |
+| 30 m amatőr | 10.136 MHz | 9.613–10.637 MHz | USB | 1.024 Msps |
+| 20 m amatőr | 14.200 MHz | 13.663–14.687 MHz | USB | 1.024 Msps |
+| 15 m amatőr | 21.285 MHz | 20.713–21.737 MHz | USB | 1.024 Msps |
+| 10 m + CB | 27.500 MHz | 26.976–29.024 MHz | AM | 2.048 Msps |
+| 41 m rövidhullámú műsorszórás | 7.320 MHz | 6.888–7.912 MHz | AM | 1.024 Msps |
+| 49 m rövidhullámú műsorszórás | 6.070 MHz | 5.538–6.562 MHz | AM | 1.024 Msps |
+| 31 m rövidhullámú műsorszórás | 9.700 MHz | 9.138–10.162 MHz | AM | 1.024 Msps |
+| 22 m rövidhullámú műsorszórás | 13.700 MHz | 13.208–14.232 MHz | AM | 1.024 Msps |
+| 25 m rövidhullámú műsorszórás | 12.000 MHz | 11.338–12.362 MHz | AM | 1.024 Msps |
+| 19 m rövidhullámú műsorszórás | 15.500 MHz | 14.938–15.962 MHz | AM | 1.024 Msps |
+| 16 m rövidhullámú műsorszórás | 17.700 MHz | 17.178–18.202 MHz | AM | 1.024 Msps |
+| AM középhullám | 1.200 MHz | 0.488–1.512 MHz | AM | 1.024 Msps |
+| 433 MHz ISM – időjárás-állomások | 433.920 MHz | 432.920–434.920 MHz | ISM | 2.000 Msps |
+| PMR446 | 446.00625 MHz | 445.588–446.612 MHz | NFM | 1.024 Msps |
+| 2 m amatőr | 145.7125 MHz | 143.976–146.024 MHz | NFM | 2.048 Msps |
+| 70 cm amatőr átjátszók | 439.275 MHz | 437.600–440.000 MHz | NFM | 2.400 Msps |
+| ADS-B | 1090.000 MHz | 1088.800–1091.200 MHz | ADS-B | 2.400 Msps |
+| Légi sáv – profil A | 125.500 MHz | 124.300–126.700 MHz | AM | 2.400 Msps |
+| Légi sáv – profil B | 129.500 MHz | 128.400–130.800 MHz | AM | 2.400 Msps |
+| Légi sáv – profil C | 131.250 MHz | 130.300–132.700 MHz | AM | 2.400 Msps |
+| Légi sáv – profil D | 134.585 MHz | 133.400–135.800 MHz | AM | 2.400 Msps |
+| FM műsorszórás 87.5–89.5 MHz | 88.100 MHz | 87.300–89.700 MHz | WFM | 2.400 Msps |
+| FM műsorszórás 89.5–91.5 MHz | 90.100 MHz | 89.300–91.700 MHz | WFM | 2.400 Msps |
+| FM műsorszórás 91.5–93.5 MHz | 92.100 MHz | 91.300–93.700 MHz | WFM | 2.400 Msps |
+| FM műsorszórás 93.5–95.5 MHz | 94.100 MHz | 93.300–95.700 MHz | WFM | 2.400 Msps |
+| FM műsorszórás 95.5–97.5 MHz | 96.100 MHz | 95.300–97.700 MHz | WFM | 2.400 Msps |
+| FM műsorszórás 97.5–99.5 MHz | 98.100 MHz | 97.300–99.700 MHz | WFM | 2.400 Msps |
+| FM műsorszórás 99.5–101.5 MHz | 100.100 MHz | 99.300–101.700 MHz | WFM | 2.400 Msps |
+| FM műsorszórás 101.5–103.5 MHz | 102.100 MHz | 101.300–103.700 MHz | WFM | 2.400 Msps |
+| FM műsorszórás 103.5–105.5 MHz | 104.100 MHz | 103.300–105.700 MHz | WFM | 2.400 Msps |
+| FM műsorszórás 105.5–108 MHz | 106.100 MHz | 105.500–107.900 MHz | WFM | 2.400 Msps |
+| Meteor LRPT – M2-3/M2-4 | 137.900 MHz | 136.988–138.012 MHz | WFM | 1.024 Msps |
+
+A 10 m + CB profil tényleges mintavételi ablaka 26.976–29.024 MHz, ezért nem fedi le sem a teljes CEPT CB-sávot, sem a teljes 10 m amatőrsávot. A CB CH 01 (26.965 MHz), valamint a 29.024 MHz fölötti 10 m-es pontok ezen a profilon kívül esnek.
+
+### DAB/DAB+ profilok
+
+A DAB/DAB+ digitális földfelszíni rádió multiplexeit a műsorszórók üzemeltetik; a hallgatók a csatornablokkokon több rádióműsort vehetnek. Mindegyik profil 2.048 Msps mintavételű, DAB demodulációjú, a kezdő hangolás a blokk középfrekvenciája. A vételi tartomány oszlop a konfigurált mintavételi ablakot mutatja.
+
+| Profil | Kezdő hangolás | Névleges vételi tartomány | Mód | Mintavétel |
+|---|---:|---:|:---:|---:|
+| DAB/DAB+ 5A | 174.928 MHz | 173.904–175.952 MHz | DAB | 2.048 Msps |
+| DAB/DAB+ 5B | 176.640 MHz | 175.616–177.664 MHz | DAB | 2.048 Msps |
+| DAB/DAB+ 5C | 178.352 MHz | 177.328–179.376 MHz | DAB | 2.048 Msps |
+| DAB/DAB+ 5D | 180.064 MHz | 179.040–181.088 MHz | DAB | 2.048 Msps |
+| DAB/DAB+ 6A | 181.936 MHz | 180.912–182.960 MHz | DAB | 2.048 Msps |
+| DAB/DAB+ 6B | 183.648 MHz | 182.624–184.672 MHz | DAB | 2.048 Msps |
+| DAB/DAB+ 6C | 185.360 MHz | 184.336–186.384 MHz | DAB | 2.048 Msps |
+| DAB/DAB+ 6D | 187.072 MHz | 186.048–188.096 MHz | DAB | 2.048 Msps |
+| DAB/DAB+ 7A | 188.928 MHz | 187.904–189.952 MHz | DAB | 2.048 Msps |
+| DAB/DAB+ 7B | 190.640 MHz | 189.616–191.664 MHz | DAB | 2.048 Msps |
+| DAB/DAB+ 7C | 192.352 MHz | 191.328–193.376 MHz | DAB | 2.048 Msps |
+| DAB/DAB+ 7D | 194.064 MHz | 193.040–195.088 MHz | DAB | 2.048 Msps |
+| DAB/DAB+ 8A | 195.936 MHz | 194.912–196.960 MHz | DAB | 2.048 Msps |
+| DAB/DAB+ 8B | 197.648 MHz | 196.624–198.672 MHz | DAB | 2.048 Msps |
+| DAB/DAB+ 8C | 199.360 MHz | 198.336–200.384 MHz | DAB | 2.048 Msps |
+| DAB/DAB+ 8D | 201.072 MHz | 200.048–202.096 MHz | DAB | 2.048 Msps |
+| DAB/DAB+ 9A | 202.928 MHz | 201.904–203.952 MHz | DAB | 2.048 Msps |
+| DAB/DAB+ 9B | 204.640 MHz | 203.616–205.664 MHz | DAB | 2.048 Msps |
+| DAB/DAB+ 9C | 206.352 MHz | 205.328–207.376 MHz | DAB | 2.048 Msps |
+| DAB/DAB+ 9D | 208.064 MHz | 207.040–209.088 MHz | DAB | 2.048 Msps |
+| DAB/DAB+ 10A | 209.936 MHz | 208.912–210.960 MHz | DAB | 2.048 Msps |
+| DAB/DAB+ 10B | 211.648 MHz | 210.624–212.672 MHz | DAB | 2.048 Msps |
+| DAB/DAB+ 10C | 213.360 MHz | 212.336–214.384 MHz | DAB | 2.048 Msps |
+| DAB/DAB+ 10D | 215.072 MHz | 214.048–216.096 MHz | DAB | 2.048 Msps |
+| DAB/DAB+ 11A | 216.928 MHz | 215.904–217.952 MHz | DAB | 2.048 Msps |
+| DAB/DAB+ 11B | 218.640 MHz | 217.616–219.664 MHz | DAB | 2.048 Msps |
+| DAB/DAB+ 11C | 220.352 MHz | 219.328–221.376 MHz | DAB | 2.048 Msps |
+| DAB/DAB+ 11D | 222.064 MHz | 221.040–223.088 MHz | DAB | 2.048 Msps |
+| DAB/DAB+ 12A | 223.936 MHz | 222.912–224.960 MHz | DAB | 2.048 Msps |
+| DAB/DAB+ 12B | 225.648 MHz | 224.624–226.672 MHz | DAB | 2.048 Msps |
+| DAB/DAB+ 12C | 227.360 MHz | 226.336–228.384 MHz | DAB | 2.048 Msps |
+| DAB/DAB+ 12D | 229.072 MHz | 228.048–230.096 MHz | DAB | 2.048 Msps |
+| DAB/DAB+ 13A | 230.784 MHz | 229.760–231.808 MHz | DAB | 2.048 Msps |
+| DAB/DAB+ 13B | 232.496 MHz | 231.472–233.520 MHz | DAB | 2.048 Msps |
+| DAB/DAB+ 13C | 234.208 MHz | 233.184–235.232 MHz | DAB | 2.048 Msps |
+| DAB/DAB+ 13D | 235.776 MHz | 234.752–236.800 MHz | DAB | 2.048 Msps |
+| DAB/DAB+ 13E | 237.488 MHz | 236.464–238.512 MHz | DAB | 2.048 Msps |
+| DAB/DAB+ 13F | 239.200 MHz | 238.176–240.224 MHz | DAB | 2.048 Msps |
+
 ## CB, 11 m freeband és 10 m amatőrsáv – frekvencialeltár
 
 A táblázatok a vevőben beállított bookmarkokat sorolják fel. A mód a bookmark demodulációs alapbeállítása, vételre szolgál; önmagában nem jelent adási jogosultságot.
