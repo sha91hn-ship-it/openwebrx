@@ -1,0 +1,59 @@
+{
+  "station": {
+    "name": "location",
+    "latitude": 0.0,
+    "longitude": 0.0,
+    "altitude_m": 0,
+    "timezone": "UTC"
+  },
+  "lookahead_hours": 336,
+  "max_recordings_in_lookahead": 5,
+  "lock_top_pass_targets": true,
+  "recompute_seconds": 3600,
+  "tle_refresh_seconds": 21600,
+  "tle_max_age_seconds": 604800,
+  "minimum_visible_elevation_deg": 0,
+  "record_elevation_deg": 10,
+  "minimum_peak_for_recording_deg": 30,
+  "preferred_peak_elevation_deg": 30,
+  "recommended_peak_elevation_deg": 50,
+  "record_below_30_deg": false,
+  "record_margin_seconds": 120,
+  "sample_rate": 1024000,
+  "supported_sample_rates": [
+    1024000,
+    2048000
+  ],
+  "format": "cu8",
+  "frequency_shift_hz": 0,
+  "gain_db": 38.6,
+  "gain_mode": "manual",
+  "ppm_correction": 0,
+  "rtl_sdr_device_serial": "SET_DEVICE_SERIAL",
+  "output_directory": "/home/user/radio-recordings/meteo",
+  "storage_limit_bytes": 38654705664,
+  "minimum_free_bytes": 2147483648,
+  "status_source_url": "https://ub8qbd.satdump.org/wx_report_new.html",
+  "satdump": {
+    "pipeline": "meteor_m2-x_lrpt",
+    "automatic_processing": true,
+    "runtime_compatible_build_confirmed": false,
+    "known_runtime_issue": "Installed aarch64 satdump exits with SIGILL on Raspberry Pi 4; processing is held as unavailable until a compatible build is installed."
+  },
+  "satellites": [
+    {
+      "name": "Meteor-M2-3",
+      "norad": 57166,
+      "frequency_hz": 137900000,
+      "frequency_evidence": "Community reception report, 137.9 MHz, 2026-07-08",
+      "frequency_evidence_url": "https://catsarentreal.com/satellites/2026-07-08/"
+    },
+    {
+      "name": "Meteor-M2-4",
+      "norad": 59051,
+      "frequency_hz": 137900000,
+      "frequency_evidence": "Community reception report, 137.9 MHz, 2026-09-23",
+      "frequency_evidence_url": "https://gdamdam.github.io/meteor-satellite-reception/meteor-m2-4-2026-09-23.html"
+    }
+  ]
+}

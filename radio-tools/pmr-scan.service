@@ -1,0 +1,20 @@
+[Unit]
+Description=PMR446 scan and activity recording
+After=openwebrx.service
+
+[Service]
+Type=simple
+User=user
+Group=user
+SupplementaryGroups=plugdev
+UMask=0077
+WorkingDirectory=/home/user
+ExecStart=/usr/bin/python3 /home/user/radio-tools/rf_monitor.py pmr --device 0 --output /home/user/radio-recordings --max-storage-gb 4
+Restart=no
+KillMode=control-group
+TimeoutStopSec=10
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+# Started and stopped by pmr-idle-watch.service.

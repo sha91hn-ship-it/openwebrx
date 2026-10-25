@@ -1,0 +1,10 @@
+[Unit]
+Description=Recalculate Meteor pass schedule hourly
+
+[Timer]
+OnBootSec=45
+OnUnitActiveSec=1h
+Persistent=true
+
+[Install]
+WantedBy=timers.target

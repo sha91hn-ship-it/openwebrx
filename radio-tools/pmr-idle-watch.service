@@ -1,0 +1,21 @@
+[Unit]
+Description=Start scheduled Meteor recording when OpenWebRX has been idle for two minutes
+After=nginx.service openwebrx.service
+Wants=nginx.service openwebrx.service
+
+[Service]
+Type=simple
+User=root
+ExecStart=/usr/bin/python3 /usr/local/sbin/pmr_idle_watch.py
+Restart=always
+RestartSec=2
+NoNewPrivileges=true
+ProtectHome=read-only
+ProtectSystem=strict
+ReadOnlyPaths=/var/log/nginx
+PrivateTmp=true
+RuntimeDirectory=pmr-idle-watch
+RuntimeDirectoryMode=0755
+
+[Install]
+WantedBy=multi-user.target

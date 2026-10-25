@@ -1,0 +1,15 @@
+[Unit]
+Description=Record Meteor LRPT raw IQ during predicted passes
+After=openwebrx.service
+
+[Service]
+Type=simple
+User=user
+Group=user
+SupplementaryGroups=plugdev
+ExecStart=/usr/bin/python3 /home/user/radio-tools/meteo.py capture
+KillMode=mixed
+TimeoutStopSec=10
+Restart=no
+UMask=0022
+Nice=5

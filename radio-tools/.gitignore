@@ -1,0 +1,11 @@
+__pycache__/
+*.py[cod]
+meteo-state/
+meteo-config.json
+radio-recordings/
+*.cu8
+*.wav
+*.cadu
+*.png
+*.log
+.env

@@ -1,0 +1,16 @@
+{
+  "receiver_name": "location",
+  "receiver_location": "location",
+  "receiver_admin": "user",
+  "receiver_gps": "0,0",
+  "receiver_asl": 0,
+  "receiver_country": "XX",
+  "max_clients": 20,
+  "max_clients_per_ip": 20,
+  "bot_ban_enabled": false,
+  "eibi_bookmarks_range": 25000,
+  "profile_ids_example": [
+    "dab_10a",
+    "meteor_137"
+  ]
+}

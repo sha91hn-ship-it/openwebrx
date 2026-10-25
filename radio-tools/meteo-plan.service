@@ -1,0 +1,13 @@
+[Unit]
+Description=Refresh Meteor TLEs and predict passes over location
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+User=user
+ExecStart=/usr/bin/python3 /home/user/radio-tools/meteo.py plan
+TimeoutStartSec=120
+UMask=0022
+Nice=10
+

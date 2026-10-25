@@ -1,0 +1,27 @@
+#!/usr/bin/python3
+"""Wait for the PMR scanner to release the tuner before starting OpenWebRX."""
+import os
+import socket
+import sys
+
+
+def main():
+    # OpenWebRX checks this exact program name in --version output. These
+    # queries must not stop the scanner or reset an active receiver.
+    if any(arg in ("--version", "-v", "--help", "-h") for arg in sys.argv[1:]):
+        os.execv("/usr/bin/rtl_connector", ["rtl_connector", *sys.argv[1:]])
+    try:
+        with socket.socket(socket.AF_UNIX, socket.SOCK_STREAM) as control:
+            control.settimeout(25)
+            control.connect("/run/pmr-idle-watch/control.sock")
+            response = control.makefile("rb").readline(16)
+            if response != b"OK\n":
+                raise RuntimeError("PMR watcher did not confirm tuner release")
+    except (OSError, RuntimeError) as exc:
+        print(f"RTL-SDR handover failed: {exc}", file=sys.stderr)
+        return 1
+    os.execv("/usr/bin/rtl_connector", ["rtl_connector", *sys.argv[1:]])
+
+
+if __name__ == "__main__":
+    sys.exit(main())
